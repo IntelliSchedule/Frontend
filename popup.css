@@ -1,12 +1,15 @@
 .container {
-    width: 50px;
-    height: 50px;
+    width: 225px;
+    height: 450px;
     background-color: #f2f2f2;
-    transition: all 0.3s ease;
-  }
-  
-.expanded {
-    width: 400px;
-    height: 400px;
 }
   
+.child-container {
+  width: 95%;  /* relative to its parent */
+  height: 30%;  /* relative to its parent */
+  background-color: #ddd;
+  margin: 0.5rem auto;  /* Margin of 0.5rem at top and bottom */
+  text-align: center;
+  line-height: 1;  /* relative to its height */
+  cursor: pointer;
+}
