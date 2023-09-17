@@ -52,8 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Create and append your cards here, based on API response
                 const parentContainer =
                   document.getElementById("mainContainer");
+                const limitedEntries = Object.entries(
+                  data.professorInformationList
+                ).slice(0, 3);
                 // Loop through each response and create a card
-                responses.forEach((response) => {
+                limitedEntries.forEach(([professorName, info]) => {
                   // Create child container
                   const childContainer = document.createElement("div");
                   childContainer.className = "child-container";
@@ -77,16 +80,14 @@ document.addEventListener("DOMContentLoaded", () => {
                   const cardRatings = document.createElement("div");
                   cardRatings.className = "card_ratings";
 
-                  [
-                    response.avgRating,
-                    response.avgDifficulty,
-                    response.wouldTakeAgainPercent,
-                  ].forEach((rating) => {
-                    const cardRating = document.createElement("div");
-                    cardRating.className = "card_rating";
-                    cardRating.innerText = rating;
-                    cardRatings.appendChild(cardRating);
-                  });
+                  [info.avgRating, info.avgDifficulty, info.sentiment].forEach(
+                    (rating) => {
+                      const cardRating = document.createElement("div");
+                      cardRating.className = "card_rating";
+                      cardRating.innerText = rating;
+                      cardRatings.appendChild(cardRating);
+                    }
+                  );
 
                   // Create bottom section
                   const cardBottom = document.createElement("div");
@@ -94,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                   const cardName = document.createElement("div");
                   cardName.className = "card_name";
-                  cardName.innerText = response.professorName;
+                  cardName.innerText = professorName;
 
                   const cardCart = document.createElement("img");
                   cardCart.className = "card_cart";
@@ -143,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (!document.getElementById("summary")) {
                       const summaryCard = document.createElement("div");
                       summaryCard.id = "summary";
-                      summaryCard.innerText = "Summary Content Here..."; // Replace with actual summary
+                      summaryCard.innerText = info.summary; // Replace with actual summary
 
                       const closeButton = document.createElement("button");
                       closeButton.innerText = "X";

@@ -39,6 +39,7 @@ body.expanded {
 .container {
   display: flex;
   color: white;
+  background-color: #DEE1ED;
   justify-content: space-evenly;
   align-items: center;
   margin : 0 auto;
