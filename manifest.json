@@ -1,16 +1,22 @@
 {
   "manifest_version": 3,
   "name": "Popup Animation Extension",
-  "version": "1.0",
+  "version": "3.4",
   "description": "A simple extension with an animated popup",
-  "permissions": ["activeTab"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "48": "icon48.png"
     }
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "permissions": ["activeTab"]
 }
